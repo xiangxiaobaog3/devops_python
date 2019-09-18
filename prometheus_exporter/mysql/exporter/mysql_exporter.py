@@ -1,7 +1,7 @@
-from prometheus_client import start_http_server, Metric, Gauge, REGISTRY
-from prometheus_exporter.mysql.commands import mysql_metrices
 import os, argparse, sys
 sys.path.append('/opt/script/devops_python')
+from prometheus_client import start_http_server, Metric, Gauge, REGISTRY
+from prometheus_exporter.mysql.commands import mysql_metrices
 
 EXPORTER_PORT = 9006
 SERVICE_PORT = 3306
