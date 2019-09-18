@@ -15,10 +15,8 @@ class check_mysql:
         cursor = db.cursor()
         cursor.execute("show slave status")
         data = cursor.fetchall()
-        slave_io = data[0]['Slave_IO_Runnig']
-        print(slave_io)
-        print(type(slave_io))
-        slave_sql = data[0]['Slave_SQL_Runnig']
+        slave_io = data[0][11]
+        slave_sql = data[0][12]
         db.close()
 
         if slave_io == 'Yes' or slave_sql == 'Yes':
