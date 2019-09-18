@@ -20,9 +20,9 @@ class check_mysql:
         db.close()
 
         if slave_io == 'Yes' or slave_sql == 'Yes':
-            print(1)
+            return 1
         else:
-            print(0)
+            return 0
 
 
 if __name__ == "__main__":
