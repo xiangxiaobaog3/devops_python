@@ -10,7 +10,7 @@ class MySQLExporter():
     def collect(self):
         try:
             for metrics in mysql_metrices.mysql_metrices:
-                command = os.system(metrics['command'])
+                command = os.popen(metrics['command']).read()
                 metric = Metric(metrics['name'], metrics['desc'], metrics['type'])
                 if metrics['data_type'] == 'integer':
                     metric.add_sample(metrics['name'], value=int(command), labels= {})
