@@ -2,7 +2,7 @@
 import pymysql
 
 
-class check_mysql_slave:
+class check_mysql:
     def __init__(self):
         self.dbhost = "192.168.128.92"
         self.dbuser = 'exporter'
@@ -10,12 +10,20 @@ class check_mysql_slave:
         self.dbport = 3306
 
 
-    def run_scheduler(self):
+    def slave_status(self):
         db = pymysql.connect(host=self.dbhost, user=self.dbuser, password=self.dbpass)
         cursor = db.cursor()
-        cursor.execute("SELECT VERSION()")
+        cursor.execute("show slave status")
         data = cursor.fetchall()
-        print("Database version : %s " % data)
+        slave_io = data[0]['Slave_IO_Runnig']
+        slave_sql = data[0]['Slave_SQL_Runnig']
         db.close()
 
-check_mysql_slave().run_scheduler()
+        if slave_io == 'Yes' or slave_sql == 'Yes':
+            return 1
+        else:
+            return 0
+
+
+if __name__ == "__main__":
+    check_mysql().slave_status()
