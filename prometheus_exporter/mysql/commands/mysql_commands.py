@@ -16,6 +16,8 @@ class check_mysql:
         cursor.execute("show slave status")
         data = cursor.fetchall()
         slave_io = data[0]['Slave_IO_Runnig']
+        print(slave_io)
+        print(type(slave_io))
         slave_sql = data[0]['Slave_SQL_Runnig']
         db.close()
 
