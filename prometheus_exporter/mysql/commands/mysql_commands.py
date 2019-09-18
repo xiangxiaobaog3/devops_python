@@ -1,5 +1,5 @@
 
-import pymysql
+import pymysql,sys
 
 
 class check_mysql:
@@ -20,10 +20,19 @@ class check_mysql:
         db.close()
 
         if slave_io == 'Yes' or slave_sql == 'Yes':
-            return 1
+            print(1)
         else:
-            return 0
+            print(0)
 
 
 if __name__ == "__main__":
-    check_mysql().slave_status()
+    mysql_status = check_mysql()
+
+    if len(sys.argv) != 2:
+        print("Usage: %s [--slave-status]" % sys.argv[0])
+        sys.exit(1)
+    if sys.argv[1] == "--slave-status":
+        print(mysql_status.slave_status())
+
+
+
