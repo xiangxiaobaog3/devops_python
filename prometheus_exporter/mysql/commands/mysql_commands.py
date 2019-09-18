@@ -9,7 +9,7 @@ class check_mysql:
         self.dbpass = '123456'
         self.dbport = 3306
 
-
+    # 主从状态
     def slave_status(self):
         db = pymysql.connect(host=self.dbhost, user=self.dbuser, password=self.dbpass)
         cursor = db.cursor()
