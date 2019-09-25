@@ -51,5 +51,3 @@ if __name__ == '__main__':
             obj.collect()
     except Exception as err:
         print(err)
-    # def AsteriskMetrices(self):
-    #     metric = Metric(Asterisk_Metrices[0]['name'], Asterisk_Metrices[0]['desc'], Asterisk_Metrices[0]['type'])
