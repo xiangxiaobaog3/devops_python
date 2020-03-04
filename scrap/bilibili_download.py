@@ -16,7 +16,6 @@ def get_json(aid):
     try:
         response = requests.get(url=url, params=params, headers=headers)
         data_json = response.json()['data']['pages']
-        class_name = response.json()['data']['title']
 
         data_list = []
         for data in data_json:
