@@ -22,12 +22,10 @@ def VideoName(aid):
 
     return class_name
 
-
 if __name__ == '__main__':
     aid = 84457418
 
     for video_url in VideoUrl(aid):
         subprocess.call([setting.YOU_GET_CMD, '-o', VideoName(aid), video_url])
 
-
-# print(get_json(84457418))
+        #ddfdf
