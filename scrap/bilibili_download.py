@@ -1,6 +1,9 @@
 # -*- coding:utf-8 -*-
-
+import os
+import sys
 import subprocess
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from scrap.paser.bilibili.paser_data import PaserData
 from scrap.conf import setting
@@ -27,5 +30,3 @@ if __name__ == '__main__':
 
     for video_url in VideoUrl(aid):
         subprocess.call([setting.YOU_GET_CMD, '-o', VideoName(aid), video_url])
-
-        #ddfdf
